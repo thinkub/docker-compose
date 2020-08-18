@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --max_connections=1000
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootP@ssw0rd
+      MYSQL_USER: test
+      MYSQL_PASSWORD: testP@ssw0rd
+      MYSQL_DATABASE: test
+      TZ: Asia/Seoul
+    volumes:
+      - /home/thinkub/test/mysql/data:/var/lib/mysql
+    ports:
+      - 13306:3306
+    container_name: "test-mysql"
